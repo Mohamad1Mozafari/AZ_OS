@@ -1,72 +1,72 @@
 """
-شبیه‌ساز زمان‌بندی پردازنده با الگوریتم Round Robin
-======================================================
-این برنامه چند فرآیند را از کاربر می‌گیرد و با استفاده از الگوریتم
-Round Robin (نوبتی) ترتیب اجرای آن‌ها روی CPU را محاسبه می‌کند.
+CPU Scheduler Simulator with Round Robin Algorithm
+==================================================
+This program takes several processes from the user and calculates
+their execution order on the CPU using the Round Robin algorithm.
 
-خروجی برنامه شامل موارد زیر است:
-    - نمودار گانت (Gantt Chart)
-    - جدول کامل فرآیندها (AT, BT, CT, TAT, WT, RT)
-    - میانگین زمان انتظار و میانگین زمان برگشت
+The output includes:
+    - Gantt Chart
+    - Complete process table (AT, BT, CT, TAT, WT, RT)
+    - Average waiting time and average turnaround time
 
-نکته: این برنامه بدون استفاده از هیچ کتاب‌خانه‌ی آماده‌ای نوشته شده است
-تا کد تا حد امکان ساده، خوانا و قابل فهم باقی بماند.
+Note: This program is written without using any external libraries
+to keep the code as simple, readable, and understandable as possible.
 """
 
 
 # ---------------------------------------------------------------------------
-# بخش اول: هسته‌ی الگوریتم Round Robin
+# Part 1: Round Robin Algorithm Core
 # ---------------------------------------------------------------------------
 
 def run_round_robin(processes, quantum):
     """
-    اجرای الگوریتم Round Robin روی لیستی از فرآیندها.
+    Execute the Round Robin algorithm on a list of processes.
 
-    processes: لیستی از دیکشنری‌ها با کلیدهای pid, arrival, burst
-    quantum:   مقدار کوانتوم زمانی
+    processes: list of dictionaries with keys pid, arrival, burst
+    quantum:   time quantum value
 
-    خروجی: (gantt_chart, stats)
-        gantt_chart -> لیستی از (pid, start_time, end_time)
-        stats       -> دیکشنری pid -> اطلاعات کامل فرآیند
+    Output: (gantt_chart, stats)
+        gantt_chart -> list of (pid, start_time, end_time)
+        stats       -> dictionary pid -> complete process information
     """
 
-    # فرآیندها را بر اساس زمان ورود مرتب می‌کنیم
+    # Sort processes by arrival time
     processes = sorted(processes, key=lambda p: p["arrival"])
 
-    # زمان باقی‌مانده از هر فرآیند برای اجرا
+    # Remaining burst time for each process
     remaining_burst = {p["pid"]: p["burst"] for p in processes}
 
-    first_start_time = {}   # اولین باری که فرآیند روی CPU اجرا شده
-    completion_time = {}    # زمان پایان کامل هر فرآیند
+    first_start_time = {}   # First time each process ran on CPU
+    completion_time = {}    # Completion time for each process
 
-    ready_queue = []                 # صف فرآیندهای آماده‌ی اجرا
-    not_arrived_yet = processes[:]   # فرآیندهایی که هنوز نرسیده‌اند
-    gantt_chart = []                 # ثبت هر بازه‌ی اجرا روی CPU
+    ready_queue = []                 # Queue of processes ready to run
+    not_arrived_yet = processes[:]   # Processes that haven't arrived yet
+    gantt_chart = []                 # Record each execution interval on CPU
 
     current_time = 0
 
     def move_arrived_processes_to_queue(time_now):
-        """هر فرآیندی که تا این لحظه رسیده را وارد صف آماده می‌کند."""
+        """Add any process that has arrived by this moment to the ready queue."""
         nonlocal not_arrived_yet
         newly_arrived = [p for p in not_arrived_yet if p["arrival"] <= time_now]
         ready_queue.extend(newly_arrived)
         not_arrived_yet = [p for p in not_arrived_yet if p["arrival"] > time_now]
 
-    # اگر در زمان صفر فرآیندی نرسیده باشد، زمان را به اولین ورود می‌بریم
+    # If no process arrives at time 0, advance time to the first arrival
     if not_arrived_yet:
         current_time = not_arrived_yet[0]["arrival"]
     move_arrived_processes_to_queue(current_time)
 
-    # حلقه‌ی اصلی زمان‌بندی: تا وقتی صف آماده خالی نشده ادامه می‌دهیم
+    # Main scheduling loop: continue until ready queue is empty
     while ready_queue:
         process = ready_queue.pop(0)
         pid = process["pid"]
 
-        # ثبت اولین اجرای فرآیند (برای محاسبه‌ی Response Time)
+        # Record first execution of the process (for Response Time calculation)
         if pid not in first_start_time:
             first_start_time[pid] = current_time
 
-        # این فرآیند حداکثر به اندازه‌ی یک کوانتوم اجرا می‌شود
+        # This process runs for at most one quantum
         run_time = min(quantum, remaining_burst[pid])
         start_time = current_time
         current_time += run_time
@@ -74,22 +74,22 @@ def run_round_robin(processes, quantum):
 
         gantt_chart.append((pid, start_time, current_time))
 
-        # فرآیندهایی که در طول این اجرا رسیده‌اند را به صف اضافه می‌کنیم
+        # Add processes that arrived during this execution to the queue
         move_arrived_processes_to_queue(current_time)
 
         if remaining_burst[pid] > 0:
-            # فرآیند هنوز تمام نشده -> به انتهای صف برمی‌گردد
+            # Process not finished yet -> return to the end of queue
             ready_queue.append(process)
         else:
-            # فرآیند تمام شده است
+            # Process has finished
             completion_time[pid] = current_time
 
-        # اگر صف خالی شد ولی فرآیند دیگری هنوز نرسیده، زمان را جلو می‌بریم
+        # If queue is empty but there are processes that haven't arrived yet
         if not ready_queue and not_arrived_yet:
             current_time = not_arrived_yet[0]["arrival"]
             move_arrived_processes_to_queue(current_time)
 
-    # محاسبه‌ی آمار نهایی هر فرآیند بر اساس فرمول‌های داده‌شده
+    # Calculate final statistics for each process using the given formulas
     stats = {}
     for p in processes:
         pid = p["pid"]
@@ -114,17 +114,17 @@ def run_round_robin(processes, quantum):
 
 
 # ---------------------------------------------------------------------------
-# بخش دوم: نمایش خروجی‌ها
+# Part 2: Output Display
 # ---------------------------------------------------------------------------
 
 def print_gantt_chart(gantt_chart):
-    """چاپ نمودار گانت مطابق فرمت نمونه‌ی پروژه."""
+    """Print the Gantt chart according to the project sample format."""
     print("================ Gantt Chart ================")
 
     bars = "| " + " | ".join(pid for pid, _, _ in gantt_chart) + " |"
     print(bars)
 
-    # ردیف زمان‌ها: زمان شروع اولین بازه + زمان پایان همه‌ی بازه‌ها
+    # Time row: start time of the first interval + end times of all intervals
     times = [str(gantt_chart[0][1])]
     times += [str(end) for _, _, end in gantt_chart]
     print(" ".join(times))
@@ -132,7 +132,7 @@ def print_gantt_chart(gantt_chart):
 
 
 def print_process_table(stats, process_order):
-    """چاپ جدول کامل فرآیندها مطابق فرمت نمونه‌ی پروژه."""
+    """Print the complete process table according to the project sample format."""
     print("================ Process Table ================")
     print(f"{'PID':<5}{'AT':<5}{'BT':<5}{'CT':<5}{'TAT':<5}{'WT':<5}{'RT':<5}")
 
@@ -144,7 +144,7 @@ def print_process_table(stats, process_order):
 
 
 def print_averages(stats):
-    """چاپ میانگین زمان انتظار و میانگین زمان برگشت."""
+    """Print average waiting time and average turnaround time."""
     count = len(stats)
     avg_waiting = sum(s["WT"] for s in stats.values()) / count
     avg_turnaround = sum(s["TAT"] for s in stats.values()) / count
@@ -154,30 +154,30 @@ def print_averages(stats):
 
 
 # ---------------------------------------------------------------------------
-# بخش سوم: دریافت ورودی از کاربر
+# Part 3: User Input
 # ---------------------------------------------------------------------------
 
 def read_processes_from_user():
-    """دریافت اطلاعات فرآیندها از کاربر از طریق ورودی متنی."""
+    """Get process information from the user through text input."""
     processes = []
 
-    process_count = int(input("تعداد فرآیندها را وارد کنید: "))
+    process_count = int(input("Enter the number of processes: "))
 
     for i in range(process_count):
-        print(f"\n--- اطلاعات فرآیند شماره {i + 1} ---")
-        pid = input("شناسه فرآیند (مثلاً P1): ")
-        arrival = int(input("زمان ورود (Arrival Time): "))
-        burst = int(input("زمان اجرای CPU (Burst Time): "))
+        print(f"\n--- Process {i + 1} Information ---")
+        pid = input("Process ID (e.g., P1): ")
+        arrival = int(input("Arrival Time: "))
+        burst = int(input("CPU Burst Time: "))
 
         processes.append({"pid": pid, "arrival": arrival, "burst": burst})
 
-    quantum = int(input("\nمقدار Time Quantum را وارد کنید: "))
+    quantum = int(input("\nEnter the Time Quantum: "))
 
     return processes, quantum
 
 
 # ---------------------------------------------------------------------------
-# بخش چهارم: اجرای اصلی برنامه
+# Part 4: Main Execution
 # ---------------------------------------------------------------------------
 
 def main():
