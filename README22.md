@@ -4,33 +4,13 @@
 
 ## تمرین ۱: آماده‌سازی محیط پروژه
 
-
 ```bash
 mkdir poject 
-![alt text](image.png)
-in here i do i make the project in decstop and this is it image 
-
-![alt text](image-1.png)
-
-cd Desktop\project
-
-mkdir -p {docs,templates,scripts,users,processes,network,backup,reports,tmp,archive}
-![alt text](image-5.png)
-
+mkdir -p ~/project/{docs,templates,scripts,users,processes,network,backup,reports,tmp,archive}
+cd ~/project
 pwd
 ls -l
-
-![alt text](image-2.png)
-
 tree
-![alt text](image-3.png)
-
-
-using 
-
-sudo apt install tree
-![alt text](image-4.png)
-
 ```
 <div dir="rtl">
 **توضیح:**
