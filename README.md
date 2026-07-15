@@ -5,7 +5,7 @@
 ## تمرین ۱: آماده‌سازی محیط پروژه
 
 
-```bash
+
 mkdir poject 
 ![alt text](image.png)
 in here i do i make the project in decstop and this is it image 
@@ -31,7 +31,6 @@ using
 sudo apt install tree
 ![alt text](image-4.png)
 
-```
 <div dir="rtl">
 **توضیح:**
 - `mkdir -p ~/project/{...}` یک پوشه اصلی به نام `project` در خانه کاربر می‌سازد و همزمان داخل آن، به کمک آکولاد `{}`، چند زیرپوشه (docs، templates، scripts، users، processes، network، backup، reports، tmp، archive) را در یک خط ایجاد می‌کند. فلگ `-p` باعث می‌شود اگر پوشه والد وجود نداشت، خودش ساخته شود و اگر پوشه از قبل بود، خطا ندهد.
