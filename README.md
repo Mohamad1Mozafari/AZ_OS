@@ -1,61 +1,50 @@
+<div dir="rtl">
 
+# گزارش پروژه جامع کار با ترمینال لینوکس
+### آزمایشگاه سیستم‌عامل
+
+این گزارش شامل ۲۵ تمرین است. برای هر تمرین: دستورهای اجراشده، اسکرین‌شات خروجی و جدول توضیحات آورده شده است.
+
+</div>
 
 ---
 
 ## تمرین ۱: آماده‌سازی محیط پروژه
 
 ```bash
-mkdir poject 
-mkdir -p ~/project/{docs,templates,scripts,users,processes,network,backup,reports,tmp,archive}
-cd ~/project
-pwd
-ls -l
-tree
-```
-```bash
 mkdir poject
-```
-![alt text](image.png)
-in here i do i make the project in decstop and this is it image 
-
-![alt text](image-1.png)
-
-cd Desktop\project
-
-mkdir -p {docs,templates,scripts,users,processes,network,backup,reports,tmp,archive}
-![alt text](image-5.png)
-
-```bash
+mkdir -p project/{docs,templates,scripts,users,processes,network,backup,reports,tmp,archive}
+cd project
 pwd
-```
-![alt text](image-2.png)
-```bash
 ls -l
-```
-![alt text](image-6.png)
-
 tree
-![alt text](image-3.png)
-
-<div dir="rtl">
-نصب میکنیم  sudo apt install tree با استفاده از 
- را tree 
-</div>
 sudo apt install tree
+```
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-5.png)
+![alt text](image-2.png)
+![alt text](image-6.png)
+![alt text](image-3.png)
 ![alt text](image-4.png)
 
-
-**توضیح:**
 <div dir="rtl">
 
-- `mkdir -p ~/project/{...}` یک پوشه اصلی به نام `project` در خانه کاربر می‌سازد و همزمان داخل آن، به کمک آکولاد `{}`، چند زیرپوشه (docs، templates، scripts، users، processes، network، backup، reports، tmp، archive) را در یک خط ایجاد می‌کند. فلگ `-p` باعث می‌شود اگر پوشه والد وجود نداشت، خودش ساخته شود و اگر پوشه از قبل بود، خطا ندهد.
-- `cd ~/project` وارد پوشه پروژه می‌شویم تا بقیه کارها داخل همین مسیر انجام شود.
-- `pwd` (Print Working Directory) مسیر کامل پوشه‌ای که الان داخلش هستیم را نشان می‌دهد؛ برای اثبات اینکه واقعاً داخل پوشه پروژه هستیم.
-- `ls -l` محتویات پوشه را به‌صورت لیست کامل (با سطح دسترسی، مالک، اندازه و تاریخ) نشان می‌دهد.
-- `tree` (اگر نصب نبود با `sudo apt install tree` نصبش کن) ساختار درختی کل پوشه‌ها و زیرپوشه‌ها را به‌صورت بصری و مرتب نشان می‌دهد؛ خیلی خوب برای اسکرین‌شات نهایی ساختار پروژه است.
+| دستور | توضیح |
+|---|---|
+| `mkdir project` | یک پوشه اصلی به نام project می‌سازد (این پوشه روی دسکتاپ ساخته شد). |
+| `mkdir -p project/{docs,templates,scripts,users,processes,network,backup,reports,tmp,archive}` | به کمک آکولاد `{}` چند زیرپوشه (docs، templates، scripts، users، processes، network، backup، reports، tmp، archive) را همزمان در یک خط می‌سازد. فلگ `-p` باعث می‌شود اگر پوشه والد وجود نداشت خودش ساخته شود و اگر پوشه از قبل بود خطا ندهد. |
+| `cd project` | وارد پوشه پروژه می‌شویم تا بقیه کارها داخل همین مسیر انجام شود. |
+| `pwd` | (Print Working Directory) مسیر کامل پوشه‌ای که الان داخلش هستیم را نشان می‌دهد؛ برای اثبات اینکه واقعاً داخل پوشه پروژه هستیم. |
+| `ls -l` | محتویات پوشه را به‌صورت لیست کامل (با سطح دسترسی، مالک، اندازه و تاریخ) نشان می‌دهد. |
+| `tree` | ساختار درختی کل پوشه‌ها و زیرپوشه‌ها را به‌صورت بصری و مرتب نشان می‌دهد؛ خیلی خوب برای اسکرین‌شات نهایی ساختار پروژه است. |
+| `sudo apt install tree` | چون دستور tree به‌طور پیش‌فرض روی سیستم نصب نبود، با این دستور و دسترسی ادمین (sudo) آن را نصب می‌کنیم. |
+
+</div>
 
 ---
-</div>
+
 ## تمرین ۲: آشنایی با راهنمای دستورها
 
 ```bash
@@ -65,41 +54,27 @@ whatis ls
 info ls
 apropos copy
 ```
+
 ![alt text](image-7.png)
-
-
-man ls 
-
 ![alt text](image-8.png)
-
-ls --help
-
 ![alt text](image-9.png)
 ![alt text](image-10.png)
-
-
-whatis ls
 ![alt text](image-11.png)
-
-info ls
 ![alt text](image-13.png)
 ![alt text](image-14.png)
-
-apropos copy
-
 ![alt text](image-12.png)
 
+<div dir="rtl">
 
+| دستور | توضیح |
+|---|---|
+| `man ls` | صفحه راهنمای کامل (manual) دستور ls را باز می‌کند؛ شامل توضیح کلی، تمام گزینه‌ها (options) و نحوه استفاده. با کلید `q` از آن خارج می‌شوی. |
+| `ls --help` | یک خلاصه سریع‌تر و کوتاه‌تر از گزینه‌های دستور را مستقیم در ترمینال چاپ می‌کند، بدون باز شدن صفحه جدید. |
+| `whatis ls` | فقط در یک خط توضیح می‌دهد که دستور ls چه کاری انجام می‌دهد. |
+| `info ls` | نسخه تعاملی‌تر و گاهی مفصل‌تر از راهنما را باز می‌کند (فرمت GNU Info). |
+| `apropos copy` | تمام دستوراتی که در توضیحاتشان کلمه «copy» وجود دارد را جستجو و لیست می‌کند؛ وقتی اسم دقیق دستور را نمی‌دانی مفید است. |
 
-
-**توضیح:**
-- `man ls` صفحه راهنمای کامل (manual) دستور `ls` را باز می‌کند؛ شامل توضیح کلی، تمام گزینه‌ها (options) و نحوه استفاده. با `q` از آن خارج می‌شوی.
-- `ls --help` یک خلاصه سریع‌تر و کوتاه‌تر از گزینه‌های دستور را مستقیم در ترمینال چاپ می‌کند، بدون باز شدن صفحه جدید.
-- `whatis ls` فقط در یک خط توضیح می‌دهد که دستور `ls` چه کاری انجام می‌دهد.
-- `info ls` نسخه تعاملی‌تر و گاهی مفصل‌تر از راهنما را باز می‌کند (فرمت GNU Info).
-- `apropos copy` تمام دستوراتی که در توضیحاتشان کلمه "copy" وجود دارد را جستجو و لیست می‌کند؛ وقتی اسم دقیق دستور را نمی‌دانی مفید است.
-
-برای گزارش، همین کار را برای چند دستور دیگر مثل `cp`, `chmod`, `find`, `ps` هم تکرار کن و در جدول بنویس.
+</div>
 
 ---
 
@@ -118,58 +93,36 @@ cd ..
 cd docs
 ```
 
-cd docs
 ![alt text](image-15.png)
-
-pwd
-mkdir test_folder
 ![alt text](image-16.png)
 ![alt text](image-17.png)
-
-
-
-mkdir -p test_folder/sub1/sub2
 ![alt text](image-18.png)
-
 ![alt text](image-19.png)
-
 ![alt text](image-20.png)
-
-rmdir test_folder/sub1/sub2
-
 ![alt text](image-22.png)
-
 ![alt text](image-21.png)
-
-ls
 ![alt text](image-23.png)
-
-ls -a
 ![alt text](image-24.png)
-
-ls -l
 ![alt text](image-25.png)
-
-cd ..
-cd docs
 ![alt text](image-26.png)
 
+<div dir="rtl">
 
-
-
-
-**توضیح:**
-- `cd ~/project/docs` جابه‌جایی به داخل پوشه docs.
-- `pwd` نمایش مسیر فعلی برای اطمینان از محل قرارگیری.
-- `mkdir test_folder` ساخت یک پوشه آزمایشی.
-- `mkdir -p test_folder/sub1/sub2` ساخت چند پوشه تو در تو در یک دستور (نیازی به ساخت مرحله‌به‌مرحله نیست).
-- `rmdir test_folder/sub1/sub2` حذف یک پوشه خالی؛ توجه کن `rmdir` فقط پوشه‌های خالی را حذف می‌کند، اگر پوشه محتوا داشته باشد خطا می‌دهد.
-- `ls` نمایش لیست ساده فایل‌ها و پوشه‌ها (فایل‌های مخفی که با نقطه شروع می‌شوند نشان داده نمی‌شوند).
-- `ls -a` نمایش همه چیز شامل فایل‌های مخفی (که نامشان با `.` شروع می‌شود، مثل `.bashrc`).
-- `ls -l` نمایش کامل (Long listing) شامل سطح دسترسی، تعداد لینک، مالک، گروه، اندازه فایل به بایت و تاریخ آخرین تغییر.
-- `cd ..` بازگشت به یک پوشه بالاتر (پوشه والد).
+| دستور | توضیح |
+|---|---|
+| `cd docs` | جابه‌جایی به داخل پوشه docs. |
+| `pwd` | نمایش مسیر فعلی برای اطمینان از محل قرارگیری. |
+| `mkdir test_folder` | ساخت یک پوشه آزمایشی. |
+| `mkdir -p test_folder/sub1/sub2` | ساخت چند پوشه تو در تو در یک دستور (نیازی به ساخت مرحله‌به‌مرحله نیست). |
+| `rmdir test_folder/sub1/sub2` | حذف یک پوشه خالی؛ توجه کن rmdir فقط پوشه‌های خالی را حذف می‌کند، اگر پوشه محتوا داشته باشد خطا می‌دهد. |
+| `ls` | نمایش لیست ساده فایل‌ها و پوشه‌ها (فایل‌های مخفی که با نقطه شروع می‌شوند نشان داده نمی‌شوند). |
+| `ls -a` | نمایش همه چیز شامل فایل‌های مخفی (که نامشان با `.` شروع می‌شود، مثل `.bashrc`). |
+| `ls -l` | نمایش کامل (Long listing) شامل سطح دسترسی، تعداد لینک، مالک، گروه، اندازه فایل به بایت و تاریخ آخرین تغییر. |
+| `cd ..` | بازگشت به یک پوشه بالاتر (پوشه والد). |
 
 **تفاوت نمایش معمولی و کامل:** `ls` فقط اسم‌ها را نشان می‌دهد ولی `ls -l` جزئیات کامل (سطح دسترسی، مالک، حجم، تاریخ) را هم می‌دهد که برای تحلیل بعدی (مثل بخش سطح دسترسی) لازم است.
+
+</div>
 
 ---
 
@@ -188,70 +141,41 @@ mv note1_renamed.txt ../tmp/
 rm ../tmp/note1_renamed.txt
 ```
 
-touch note1.txt note2.txt
 ![alt text](image-29.png)
-
 ![alt text](image-27.png)
-
-echo "This is a First Line" > note1.txt
 ![alt text](image-28.png)
 ![alt text](image-30.png)
-
-echo "This is a Second Line " >> note1.txt
 ![alt text](image-31.png)
 ![alt text](image-32.png)
-
-
-cat note1.txt
 ![alt text](image-33.png)
-
-nano note2.txt
 ![alt text](image-34.png)
-
 ![alt text](image-35.png)
-
 ![alt text](image-36.png)
-
 ![alt text](image-37.png)
-
-cp note1.txt note1_copy.txt
 ![alt text](image-38.png)
-
 ![alt text](image-39.png)
-
-mv note1_copy.txt note1_renamed.txt
 ![alt text](image-40.png)
 ![alt text](image-41.png)
-
-mv note1_renamed.txt ../tmp/
 ![alt text](image-43.png)
 ![alt text](image-42.png)
-
-
-rm ../tmp/note1_renamed.txt
 ![alt text](image-44.png)
 ![alt text](image-45.png)
 
+<div dir="rtl">
 
+| دستور | توضیح |
+|---|---|
+| `touch note1.txt note2.txt` | ساخت دو فایل خالی متنی. اگر فایل از قبل وجود داشته باشد فقط تاریخ آخرین تغییرش آپدیت می‌شود. |
+| `echo "متن" > note1.txt` | نوشتن یک خط متن داخل فایل؛ علامت `>` محتوای قبلی فایل را کامل پاک کرده و متن جدید را جایگزین می‌کند (overwrite). |
+| `echo "متن" >> note1.txt` | همان کار بالا ولی با دو تا `>>`؛ این بار متن جدید به انتهای فایل اضافه می‌شود بدون پاک کردن محتوای قبلی (append). |
+| `cat note1.txt` | نمایش کامل محتوای فایل در ترمینال. |
+| `nano note2.txt` | باز کردن ویرایشگر متنی nano برای نوشتن داخل فایل به‌صورت تعاملی (ذخیره: `Ctrl+O` سپس `Enter`، خروج: `Ctrl+X`). |
+| `cp note1.txt note1_copy.txt` | کپی کردن یک فایل با نام جدید (فایل اصلی دست‌نخورده باقی می‌ماند). |
+| `mv note1_copy.txt note1_renamed.txt` | تغییر نام فایل (دستور mv هم برای جابه‌جایی و هم برای تغییر نام استفاده می‌شود). |
+| `mv note1_renamed.txt ../tmp/` | انتقال فایل به پوشه دیگر. |
+| `rm ../tmp/note1_renamed.txt` | حذف فایل (این حذف دائمی است و به سطل بازیافت نمی‌رود، پس باید با احتیاط استفاده شود). |
 
-
-
-
-
-
-
-
-
-**توضیح:**
-- `touch note1.txt note2.txt` ساخت دو فایل خالی متنی. اگر فایل از قبل وجود داشته باشد فقط تاریخ آخرین تغییرش آپدیت می‌شود.
-- `echo "متن" > note1.txt` نوشتن یک خط متن داخل فایل؛ علامت `>` محتوای قبلی فایل را کامل پاک کرده و متن جدید را جایگزین می‌کند (overwrite).
-- `echo "متن" >> note1.txt` همان کار بالا ولی با دو تا `>>`؛ این بار متن جدید به **انتهای** فایل اضافه می‌شود بدون پاک کردن محتوای قبلی (append).
-- `cat note1.txt` نمایش کامل محتوای فایل در ترمینال.
-- `nano note2.txt` باز کردن ویرایشگر متنی nano برای نوشتن داخل فایل به‌صورت تعاملی (برای ذخیره: `Ctrl+O` سپس `Enter`، برای خروج: `Ctrl+X`).
-- `cp note1.txt note1_copy.txt` کپی کردن یک فایل با نام جدید (فایل اصلی دست‌نخورده باقی می‌ماند).
-- `mv note1_copy.txt note1_renamed.txt` تغییر نام فایل (دستور `mv` هم برای جابه‌جایی و هم برای تغییر نام استفاده می‌شود).
-- `mv note1_renamed.txt ~/project/tmp/` انتقال فایل به پوشه دیگر.
-- `rm ~/project/tmp/note1_renamed.txt` حذف فایل (این حذف دائمی است و به سطل بازیافت نمی‌رود، پس باید با احتیاط استفاده شود).
+</div>
 
 ---
 
@@ -268,42 +192,28 @@ ls ../../project | wc -l
 ls ../../project | sort | head -5
 ```
 
-cd ..
-cd reports
-ls -l ../../project > success_output.txt
 ![alt text](image-46.png)
-
 ![alt text](image-48.png)
-
 ![alt text](image-47.png)
-
-ls -l ../../project/not_exist_folder 2> error_output.txt
 ![alt text](image-49.png)
-ls -l ../../project >> success_output.txt
 ![alt text](image-51.png)
-cat success_output.txt error_output.txt > combined_report.txt
 ![alt text](image-52.png)
-
-ls ../../project | wc -l
-ls ../../project | sort | head -5
-
 ![alt text](image-50.png)
-
-
 ![alt text](image-53.png)
-
 ![alt text](image-54.png)
 
+<div dir="rtl">
 
+| دستور | توضیح |
+|---|---|
+| `ls -l ../../project > success_output.txt` | خروجی موفق دستور (standard output یا stdout) داخل فایل ذخیره می‌شود (جایگزین محتوای قبلی). |
+| `ls -l ../../project/not_exist_folder 2> error_output.txt` | چون این پوشه وجود ندارد، دستور خطا می‌دهد. علامت `2>` فقط پیام‌های خطا (standard error یا stderr) را در فایل جداگانه ذخیره می‌کند نه خروجی موفق را. |
+| `ls -l ../../project >> success_output.txt` | این بار خروجی جدید به فایل قبلی اضافه می‌شود (append) بدون پاک کردن محتوای قبلی. |
+| `cat success_output.txt error_output.txt > combined_report.txt` | محتوای دو فایل پشت‌سرهم خوانده و در یک فایل جدید ترکیبی ذخیره می‌شود. |
+| `ls ../../project \| wc -l` | علامت `\|` (pipe) خروجی دستور اول را به‌عنوان ورودی دستور دوم می‌فرستد؛ خروجی ls به wc -l داده می‌شود که تعداد خطوط (تعداد فایل/پوشه‌ها) را می‌شمارد. |
+| `ls ../../project \| sort \| head -5` | یک زنجیره از سه دستور: لیست می‌گیرد، مرتب می‌کند، و فقط ۵ خط اول را نشان می‌دهد. این مثال خوبی از پردازش زنجیره‌ای است. |
 
-
-**توضیح:**
-- `ls -l ~/project > success_output.txt` خروجی موفق دستور (که به آن standard output یا stdout می‌گویند) داخل فایل ذخیره می‌شود (جایگزین محتوای قبلی).
-- `ls -l ~/project/not_exist_folder 2> error_output.txt` چون این پوشه وجود ندارد، دستور خطا می‌دهد. علامت `2>` فقط پیام‌های خطا (standard error یا stderr) را در فایل جداگانه ذخیره می‌کند نه خروجی موفق را.
-- `ls -l ~/project >> success_output.txt` این بار خروجی جدید به فایل قبلی **اضافه** می‌شود (append) بدون پاک کردن محتوای قبلی.
-- `cat success_output.txt error_output.txt > combined_report.txt` محتوای دو فایل پشت‌سرهم خوانده و در یک فایل جدید ترکیبی ذخیره می‌شود.
-- `ls ~/project | wc -l` علامت `|` (pipe) خروجی دستور اول را به‌عنوان ورودی دستور دوم می‌فرستد؛ یعنی خروجی `ls` به `wc -l` داده می‌شود که تعداد خطوط (در اینجا تعداد فایل/پوشه‌ها) را می‌شمارد.
-- `ls ~/project | sort | head -5` یک زنجیره از سه دستور: لیست می‌گیرد، مرتب می‌کند، و فقط ۵ خط اول را نشان می‌دهد. این مثال خوبی از پردازش زنجیره‌ای است.
+</div>
 
 ---
 
@@ -320,57 +230,33 @@ INFO: Save operation completed
 WARNING: CPU temperature is high
 ERROR: File not found
 EOF
-# INFO: سیستم راه‌اندازی شد
-# INFO: کاربر وارد شد
-# WARNING: فضای دیسک رو به اتمام است
-# ERROR: اتصال به شبکه قطع شد
-# INFO: عملیات ذخیره انجام شد
-# WARNING: دمای پردازنده باال است
-# ERROR: فایل پیدا نشد
 
 grep "ERROR" sample.log
+grep "WARNING" sample.log
+grep "INFO" sample.log
 grep -c "ERROR" sample.log
 grep -c "WARNING" sample.log
 grep -c "INFO" sample.log
 grep -n "ERROR" sample.log
 ```
-cd ../project/reports
-cat > sample.log << EOF
-INFO: System startup completed
-INFO: User logged in
-WARNING: Disk space is running low
-ERROR: Network connection lost
-INFO: Save operation completed
-WARNING: CPU temperature is high
-ERROR: File not found
-EOF
-# INFO: سیستم راه‌اندازی شد
-# INFO: کاربر وارد شد
-# WARNING: فضای دیسک رو به اتمام است
-# ERROR: اتصال به شبکه قطع شد
-# INFO: عملیات ذخیره انجام شد
-# WARNING: دمای پردازنده باال است
-# ERROR: فایل پیدا نشد
-
-grep  "ERROR" sample.log
-grep  "WARNING" sample.log
-grep  "INFO" sample.log
-grep -c "ERROR" sample.log
-grep -c "WARNING" sample.log
-grep -c "INFO" sample.log
-grep -n "ERROR" sample.log
-
 
 ![alt text](image-55.png)
-
 ![alt text](image-56.png)
 
-**توضیح:**
-- `cat > sample.log << EOF ... EOF` یک روش برای نوشتن چند خط متن مستقیم در فایل بدون باز کردن ویرایشگر (به این روش heredoc گفته می‌شود؛ هر چیزی بین دو `EOF` نوشته شود عیناً در فایل ذخیره می‌شود).
-- `grep "ERROR" sample.log` تمام خطوطی که کلمه ERROR در آن‌ها وجود دارد را پیدا و نمایش می‌دهد.
-- `grep -c "ERROR" sample.log` به‌جای نمایش خطوط، فقط **تعداد** خطوط مطابقت‌یافته را می‌شمارد (`-c` مخفف count).
-- همین کار را برای WARNING و INFO هم انجام می‌دهیم تا آمار هر نوع پیام مشخص شود.
-- `grep -n "ERROR" sample.log` علاوه بر نمایش خط، **شماره خط** آن را هم جلویش نشان می‌دهد؛ برای پیدا کردن دقیق محل خطا در فایل بزرگ مفید است.
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `cat > sample.log << EOF ... EOF` | روشی برای نوشتن چند خط متن مستقیم در فایل بدون باز کردن ویرایشگر (heredoc)؛ هر چیزی بین دو EOF نوشته شود عیناً در فایل ذخیره می‌شود. |
+| `grep "ERROR" sample.log` | تمام خطوطی که کلمه ERROR در آن‌ها وجود دارد را پیدا و نمایش می‌دهد. |
+| `grep "WARNING" sample.log` | همان کار بالا برای کلمه WARNING. |
+| `grep "INFO" sample.log` | همان کار بالا برای کلمه INFO. |
+| `grep -c "ERROR" sample.log` | به‌جای نمایش خطوط، فقط تعداد خطوط مطابقت‌یافته را می‌شمارد (`-c` مخفف count). |
+| `grep -c "WARNING" sample.log` | شمارش تعداد خطوط WARNING. |
+| `grep -c "INFO" sample.log` | شمارش تعداد خطوط INFO. |
+| `grep -n "ERROR" sample.log` | علاوه بر نمایش خط، شماره خط آن را هم جلویش نشان می‌دهد؛ برای پیدا کردن دقیق محل خطا در فایل بزرگ مفید است. |
+
+</div>
 
 ---
 
@@ -386,22 +272,25 @@ cut -d ' ' -f1 sample.log
 sed 's/ERROR/CRITICAL/g' sample.log > replaced.log
 split -l 3 sample.log part_
 ```
+
 ![alt text](image-57.png)
-
 ![alt text](image-59.png)
-
 ![alt text](image-58.png)
-
 ![alt text](image-60.png)
 
-**توضیح:**
-- `wc -l sample.log` تعداد خطوط فایل را می‌شمارد (Word Count با گزینه lines).
-- `wc -w sample.log` تعداد کلمات فایل را می‌شمارد.
-- `sort sample.log > sorted.log` خطوط فایل را به ترتیب حروف الفبا مرتب کرده و در فایل جدید ذخیره می‌کند.
-- `sort sample.log | uniq > unique.log` ابتدا مرتب‌سازی می‌شود (چون `uniq` فقط خطوط تکراری *پشت‌سرهم* را حذف می‌کند، پس نیاز به sort قبل از آن داریم)، سپس خطوط تکراری حذف می‌شوند.
-- `cut -d ' ' -f1 sample.log` از هر خط، فقط بخش اول را (قبل از فاصله) جدا می‌کند؛ `-d ' '` یعنی جداکننده فاصله است و `-f1` یعنی فیلد شماره یک (مثلاً کلمه INFO یا ERROR در ابتدای هر خط).
-- `sed 's/ERROR/CRITICAL/g' sample.log > replaced.log` دستور جایگزینی متن؛ هر کجا کلمه ERROR پیدا شود با CRITICAL جایگزین می‌شود (`s` یعنی substitute و `g` یعنی این کار در کل خط تکرار شود، نه فقط اولین مورد).
-- `split -l 3 sample.log part_` فایل بزرگ را به چند فایل کوچک‌تر تقسیم می‌کند؛ اینجا هر فایل جدید ۳ خط دارد و اسم فایل‌ها با `part_` شروع می‌شود (مثلاً part_aa، part_ab).
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `wc -l sample.log` | تعداد خطوط فایل را می‌شمارد (Word Count با گزینه lines). |
+| `wc -w sample.log` | تعداد کلمات فایل را می‌شمارد. |
+| `sort sample.log > sorted.log` | خطوط فایل را به ترتیب حروف الفبا مرتب کرده و در فایل جدید ذخیره می‌کند. |
+| `sort sample.log \| uniq > unique.log` | ابتدا مرتب‌سازی می‌شود (چون uniq فقط خطوط تکراری پشت‌سرهم را حذف می‌کند)، سپس خطوط تکراری حذف می‌شوند. |
+| `cut -d ' ' -f1 sample.log` | از هر خط فقط بخش اول را (قبل از فاصله) جدا می‌کند؛ `-d ' '` جداکننده فاصله است و `-f1` یعنی فیلد شماره یک. |
+| `sed 's/ERROR/CRITICAL/g' sample.log > replaced.log` | دستور جایگزینی متن؛ هر کجا کلمه ERROR پیدا شود با CRITICAL جایگزین می‌شود (`s` = substitute، `g` = در کل خط تکرار شود). |
+| `split -l 3 sample.log part_` | فایل بزرگ را به چند فایل کوچک‌تر تقسیم می‌کند؛ هر فایل جدید ۳ خط دارد و اسم فایل‌ها با part_ شروع می‌شود. |
+
+</div>
 
 ---
 
@@ -418,21 +307,27 @@ find . -size +1k
 find . -perm -u+x
 find . -name "*.log" -exec cp {} ../project/archive/ \;
 ```
+
 ![alt text](image-61.png)
 ![alt text](image-62.png)
 ![alt text](image-63.png)
 ![alt text](image-64.png)
 ![alt text](image-65.png)
 
-**توضیح:**
-- `find . -name "*.txt"` جستجوی فایل‌ها بر اساس نام/پسوند، از پوشه فعلی (`.`) به بعد و در همه زیرپوشه‌ها؛ اینجا هر فایلی که پسوندش txt باشد را پیدا می‌کند.
-- `find . -name "*.log"` مشابه بالا برای فایل‌های log.
-- `find . -type f` فقط فایل‌ها را نشان می‌دهد (نه پوشه‌ها)؛ `f` یعنی file.
-- `find . -type d` فقط پوشه‌ها را نشان می‌دهد؛ `d` یعنی directory.
-- `find . -empty` فایل‌ها یا پوشه‌های خالی (بدون محتوا) را پیدا می‌کند.
-- `find . -size +1k` فایل‌هایی که حجمشان بیشتر از ۱ کیلوبایت است را پیدا می‌کند.
-- `find . -perm -u+x` فایل‌هایی که برای مالک (user) قابل اجرا (executable) هستند را پیدا می‌کند.
-- `find . -name "*.log" -exec cp {} ~/project/archive/ \;` بعد از پیدا کردن فایل‌های log، روی هر کدام یک عملیات (اینجا کپی به پوشه archive) اجرا می‌کند؛ `{}` جای اسم فایل پیدا‌شده قرار می‌گیرد و `\;` پایان دستور exec را مشخص می‌کند.
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `find . -name "*.txt"` | جستجوی فایل‌ها بر اساس نام/پسوند، از پوشه فعلی به بعد و در همه زیرپوشه‌ها؛ اینجا هر فایلی که پسوندش txt باشد را پیدا می‌کند. |
+| `find . -name "*.log"` | مشابه بالا برای فایل‌های log. |
+| `find . -type f` | فقط فایل‌ها را نشان می‌دهد (نه پوشه‌ها)؛ f یعنی file. |
+| `find . -type d` | فقط پوشه‌ها را نشان می‌دهد؛ d یعنی directory. |
+| `find . -empty` | فایل‌ها یا پوشه‌های خالی (بدون محتوا) را پیدا می‌کند. |
+| `find . -size +1k` | فایل‌هایی که حجمشان بیشتر از ۱ کیلوبایت است را پیدا می‌کند. |
+| `find . -perm -u+x` | فایل‌هایی که برای مالک (user) قابل اجرا (executable) هستند را پیدا می‌کند. |
+| `find . -name "*.log" -exec cp {} ../project/archive/ \;` | بعد از پیدا کردن فایل‌های log، روی هر کدام یک عملیات (کپی به پوشه archive) اجرا می‌کند؛ `{}` جای اسم فایل پیدا‌شده قرار می‌گیرد و `\;` پایان دستور exec را مشخص می‌کند. |
+
+</div>
 
 ---
 
@@ -445,31 +340,38 @@ echo 'echo "hello from script"' > myscript.sh
 
 ls -l normal_file.txt myscript.sh
 
-./myscript.sh          # قبل از اجرایی کردن، خطای Permission denied می‌دهد
+./myscript.sh
 
 chmod +x myscript.sh
 ls -l myscript.sh
-./myscript.sh           # حالا اجرا می‌شود
+./myscript.sh
 
 chmod 644 normal_file.txt
 chmod 400 normal_file.txt
 chmod u+w,g-r,o-r normal_file.txt
 ```
+
 ![alt text](image-66.png)
 ![alt text](image-67.png)
 
-**توضیح:**
-- `touch normal_file.txt` و ساخت `myscript.sh` با یک خط کد ساده داخلش.
-- `ls -l` قبل از تغییر، سطح دسترسی پیش‌فرض را نشان می‌دهد (معمولاً `-rw-r--r--` برای فایل معمولی).
-- `./myscript.sh` تلاش برای اجرای اسکریپت؛ چون مجوز اجرا (execute) فعال نیست، خطای Permission denied می‌دهد.
-- `chmod +x myscript.sh` اضافه کردن مجوز اجرا به فایل برای همه (owner, group, others).
-- `ls -l myscript.sh` بعد از تغییر، حرف `x` در سطح دسترسی ظاهر می‌شود (مثلاً `-rwxr-xr-x`).
-- `./myscript.sh` این‌بار اسکریپت با موفقیت اجرا شده و پیام را چاپ می‌کند.
-- `chmod 644 normal_file.txt` تنظیم مجوز به روش عددی: 6 = خواندن+نوشتن برای مالک، 4 = فقط خواندن برای گروه، 4 = فقط خواندن برای دیگران.
-- `chmod 400 normal_file.txt` فقط مالک اجازه خواندن دارد، هیچ‌کس دیگر حتی خواندن هم نمی‌تواند.
-- `chmod u+w,g-r,o-r normal_file.txt` روش نمادین (symbolic): برای مالک (u) مجوز نوشتن اضافه می‌کند، از گروه (g) و دیگران (o) مجوز خواندن حذف می‌شود.
+<div dir="rtl">
 
-**مفهوم r/w/x:** `r` (read) یعنی توانایی خواندن محتوا، `w` (write) یعنی توانایی تغییر/نوشتن محتوا، `x` (execute) یعنی توانایی اجرا کردن فایل به‌عنوان برنامه/اسکریپت.
+| دستور | توضیح |
+|---|---|
+| `touch normal_file.txt` | ساخت یک فایل متنی معمولی. |
+| `echo 'echo "hello from script"' > myscript.sh` | ساخت یک فایل اسکریپت با یک خط دستور ساده داخلش. |
+| `ls -l normal_file.txt myscript.sh` | نمایش سطح دسترسی پیش‌فرض هر دو فایل (معمولاً `-rw-r--r--`). |
+| `./myscript.sh` (قبل از chmod) | تلاش برای اجرای اسکریپت؛ چون مجوز اجرا فعال نیست، خطای Permission denied می‌دهد. |
+| `chmod +x myscript.sh` | اضافه کردن مجوز اجرا به فایل برای همه (owner, group, others). |
+| `ls -l myscript.sh` | بعد از تغییر، حرف x در سطح دسترسی ظاهر می‌شود (مثلاً `-rwxr-xr-x`). |
+| `./myscript.sh` (بعد از chmod) | این‌بار اسکریپت با موفقیت اجرا شده و پیام را چاپ می‌کند. |
+| `chmod 644 normal_file.txt` | تنظیم مجوز به روش عددی: ۶ = خواندن+نوشتن برای مالک، ۴ = فقط خواندن برای گروه، ۴ = فقط خواندن برای دیگران. |
+| `chmod 400 normal_file.txt` | فقط مالک اجازه خواندن دارد، هیچ‌کس دیگر حتی خواندن هم نمی‌تواند. |
+| `chmod u+w,g-r,o-r normal_file.txt` | روش نمادین (symbolic): برای مالک (u) مجوز نوشتن اضافه می‌کند، از گروه (g) و دیگران (o) مجوز خواندن حذف می‌شود. |
+
+**مفهوم r/w/x:** r (read) یعنی توانایی خواندن محتوا، w (write) یعنی توانایی تغییر/نوشتن محتوا، x (execute) یعنی توانایی اجرا کردن فایل به‌عنوان برنامه/اسکریپت.
+
+</div>
 
 ---
 
@@ -493,16 +395,22 @@ ls -l test_umask2.txt
 sudo chown $USER:$USER newfile_default.txt
 sudo chgrp sudo newfile_default.txt
 ```
+
 ![alt text](image-68.png)
 
-**توضیح:**
-- `ls -l` ستون‌های سوم و چهارم مالک (owner) و گروه (group) فایل را نشان می‌دهند.
-- `umask` مقدار پیش‌فرض ماسک مجوز فعلی سیستم را نشان می‌دهد؛ این عدد تعیین می‌کند فایل‌های جدید با چه سطح دسترسی پیش‌فرضی ساخته شوند (معمولاً برای فایل‌ها پیش‌فرض ۶۶۶ منهای umask است).
-- `touch newfile_default.txt` سپس `ls -l` روی آن، مجوز پیش‌فرض فایل تازه‌ساخته را نشان می‌دهد (بدون x چون فایل‌های معمولی به‌طور پیش‌فرض اجرایی نیستند).
-- `umask 022` تغییر موقت مقدار umask؛ نتیجه‌اش این است که فایل‌های جدید مجوز `644` می‌گیرند.
-- `umask 077` سخت‌گیرانه‌تر؛ فایل‌های جدید فقط برای مالک قابل خواندن/نوشتن خواهند بود (`600`) و گروه/دیگران هیچ دسترسی ندارند.
-- `chown $USER:$USER file` تغییر مالک و گروه فایل به کاربر فعلی (`$USER` متغیر محیطی است که نام کاربر فعلی را نگه می‌دارد).
-- `chgrp sudo file` تغییر فقط گروه فایل به یک گروه دیگر (اینجا گروه sudo به‌عنوان مثال؛ باید گروهی باشد که واقعاً در سیستم وجود دارد).
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `ls -l` | ستون‌های سوم و چهارم مالک (owner) و گروه (group) فایل را نشان می‌دهند. |
+| `umask` | مقدار پیش‌فرض ماسک مجوز فعلی سیستم را نشان می‌دهد؛ این عدد تعیین می‌کند فایل‌های جدید با چه سطح دسترسی پیش‌فرضی ساخته شوند. |
+| `touch newfile_default.txt` + `ls -l` | مجوز پیش‌فرض فایل تازه‌ساخته را نشان می‌دهد (بدون x چون فایل‌های معمولی به‌طور پیش‌فرض اجرایی نیستند). |
+| `umask 022` | تغییر موقت مقدار umask؛ نتیجه‌اش این است که فایل‌های جدید مجوز 644 می‌گیرند. |
+| `umask 077` | سخت‌گیرانه‌تر؛ فایل‌های جدید فقط برای مالک قابل خواندن/نوشتن خواهند بود (600). |
+| `chown $USER:$USER file` | تغییر مالک و گروه فایل به کاربر فعلی (`$USER` متغیر محیطی نام کاربر فعلی را نگه می‌دارد). |
+| `chgrp sudo file` | تغییر فقط گروه فایل به یک گروه دیگر (اینجا گروه sudo به‌عنوان مثال). |
+
+</div>
 
 ---
 
@@ -522,17 +430,24 @@ cat hardlink.txt
 cat softlink.txt
 
 rm original.txt
-cat hardlink.txt   
-cat softlink.txt        
+cat hardlink.txt
+cat softlink.txt
 ```
+
 ![alt text](image-69.png)
 
-**توضیح:**
-- `ln original.txt hardlink.txt` ساخت یک **لینک سخت (hard link)**؛ این یک اسم دیگر برای همان فایل روی دیسک است، نه یک فایل جدید. هر دو اسم به یک شناسه فایل (inode) اشاره می‌کنند.
-- `ln -s original.txt softlink.txt` ساخت یک **لینک نرم/سمبلیک (symbolic link)**؛ این فقط یک اشاره‌گر (میانبر) به مسیر فایل اصلی است، شبیه شورتکات در ویندوز.
-- `ls -li` گزینه `i` شماره inode هر فایل را نشان می‌دهد؛ خواهی دید که `original.txt` و `hardlink.txt` دقیقاً همان شماره inode را دارند (چون یک فایل هستند)، ولی `softlink.txt` شماره inode متفاوت دارد (چون خودش یک فایل جداست که فقط مسیر را نگه می‌دارد).
-- وقتی به فایل اصلی چیزی اضافه می‌کنیم، هر دو لینک تغییر را نشان می‌دهند چون یا همان فایل هستند (hard link) یا به آن اشاره می‌کنند (soft link).
-- بعد از `rm original.txt`: لینک سخت هنوز کار می‌کند و محتوا در دسترس است، چون فایل واقعی تا وقتی حداقل یک لینک سخت به آن اشاره کند حذف نمی‌شود؛ اما لینک نرم "شکسته" (broken) می‌شود چون مسیری که به آن اشاره می‌کرد دیگر وجود ندارد.
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `ln original.txt hardlink.txt` | ساخت یک لینک سخت (hard link)؛ این یک اسم دیگر برای همان فایل روی دیسک است، نه یک فایل جدید. هر دو اسم به یک شناسه فایل (inode) اشاره می‌کنند. |
+| `ln -s original.txt softlink.txt` | ساخت یک لینک نرم/سمبلیک (symbolic link)؛ این فقط یک اشاره‌گر (میانبر) به مسیر فایل اصلی است، شبیه شورتکات در ویندوز. |
+| `ls -li ...` | گزینه i شماره inode هر فایل را نشان می‌دهد؛ original.txt و hardlink.txt همان شماره inode را دارند، ولی softlink.txt شماره inode متفاوتی دارد. |
+| `echo "..." >> original.txt` | وقتی به فایل اصلی چیزی اضافه می‌کنیم، هر دو لینک تغییر را نشان می‌دهند چون یا همان فایل هستند (hard link) یا به آن اشاره می‌کنند (soft link). |
+| `rm original.txt` سپس `cat hardlink.txt` | لینک سخت هنوز کار می‌کند و محتوا در دسترس است، چون فایل واقعی تا وقتی حداقل یک لینک سخت به آن اشاره کند حذف نمی‌شود. |
+| `cat softlink.txt` (بعد از حذف) | لینک نرم «شکسته» (broken) می‌شود چون مسیری که به آن اشاره می‌کرد دیگر وجود ندارد و خطا می‌دهد. |
+
+</div>
 
 ---
 
@@ -553,14 +468,20 @@ ls -R archive/restore_test
 ![alt text](image-70.png)
 ![alt text](image-71.png)
 ![alt text](image-72.png)
-**توضیح:**
-- `tar -cvf backup/project_archive.tar docs templates scripts` ساخت یک فایل آرشیو (بدون فشرده‌سازی) از چند پوشه؛ `c` یعنی create، `v` یعنی verbose (نمایش لیست فایل‌ها حین کار)، `f` یعنی مشخص کردن اسم فایل خروجی.
-- `tar -tvf backup/project_archive.tar` نمایش محتویات آرشیو **بدون استخراج کردن** آن؛ `t` یعنی list.
-- `gzip -k backup/project_archive.tar` فشرده کردن فایل آرشیو با فرمت gzip؛ فایل `project_archive.tar.gz` ساخته می‌شود. گزینه `-k` (keep) باعث می‌شود فایل tar اصلی هم حذف نشود.
-- `ls -l backup/` مقایسه حجم فایل tar و tar.gz برای دیدن میزان فشرده‌سازی.
-- `mkdir -p archive/restore_test` ساخت پوشه‌ای جداگانه برای بازیابی (تا با فایل‌های اصلی قاطی نشود).
-- `tar -xvf backup/project_archive.tar -C archive/restore_test` استخراج (extract) محتویات آرشیو داخل پوشه مشخص‌شده؛ `x` یعنی extract و `-C` مسیر مقصد را تعیین می‌کند.
-- `ls -R archive/restore_test` نمایش بازگشتی (Recursive) کل ساختار بازیابی‌شده برای اطمینان از صحت آن.
+
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `tar -cvf backup/project_archive.tar docs templates scripts` | ساخت یک فایل آرشیو (بدون فشرده‌سازی) از چند پوشه؛ c = create، v = verbose، f = مشخص کردن اسم فایل خروجی. |
+| `tar -tvf backup/project_archive.tar` | نمایش محتویات آرشیو بدون استخراج کردن آن؛ t = list. |
+| `gzip -k backup/project_archive.tar` | فشرده کردن فایل آرشیو با فرمت gzip؛ فایل project_archive.tar.gz ساخته می‌شود. گزینه k (keep) باعث می‌شود فایل tar اصلی هم حذف نشود. |
+| `ls -l backup/` | مقایسه حجم فایل tar و tar.gz برای دیدن میزان فشرده‌سازی. |
+| `mkdir -p archive/restore_test` | ساخت پوشه‌ای جداگانه برای بازیابی (تا با فایل‌های اصلی قاطی نشود). |
+| `tar -xvf backup/project_archive.tar -C archive/restore_test` | استخراج (extract) محتویات آرشیو داخل پوشه مشخص‌شده؛ x = extract و -C مسیر مقصد را تعیین می‌کند. |
+| `ls -R archive/restore_test` | نمایش بازگشتی (Recursive) کل ساختار بازیابی‌شده برای اطمینان از صحت آن. |
+
+</div>
 
 ---
 
@@ -577,25 +498,30 @@ df -h
 lsblk
 lsusb
 ```
-![alt text](image-73.png)
 
+![alt text](image-73.png)
 ![alt text](image-74.png)
 ![alt text](image-75.png)
-
 ![alt text](image-76.png)
 ![alt text](image-77.png)
-**توضیح:**
-- `whoami` نمایش نام کاربری که در حال حاضر لاگین است.
-- `hostname` نمایش نام دستگاه/سیستم روی شبکه.
-- `uname -a` نمایش کامل اطلاعات کرنل و سیستم‌عامل شامل نسخه کرنل، معماری (مثل x86_64) و تاریخ کامپایل.
-- `uptime` نشان می‌دهد سیستم چه مدت است روشن است، چند کاربر متصل‌اند و میانگین بار پردازشی (load average) سیستم.
-- `lscpu` اطلاعات کامل پردازنده شامل تعداد هسته‌ها، معماری و فرکانس.
-- `free -h` نمایش وضعیت حافظه RAM و فضای swap به‌صورت خوانا (`-h` یعنی human-readable، یعنی به‌جای بایت، مگابایت/گیگابایت نشان می‌دهد).
-- `df -h` نمایش فضای اشغال‌شده و آزاد دیسک‌ها/پارتیشن‌ها به‌صورت خوانا.
-- `lsblk` نمایش ساختار درختی دیسک‌ها و پارتیشن‌های متصل به سیستم.
-- `lsusb` نمایش دستگاه‌های متصل از طریق پورت USB.
 
-**تحلیل کوتاه در گزارش:** بنویس چند درصد از RAM و دیسک استفاده شده و آیا سیستم در وضعیت سالمی است یا نزدیک به پر شدن.
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `whoami` | نمایش نام کاربری که در حال حاضر لاگین است. |
+| `hostname` | نمایش نام دستگاه/سیستم روی شبکه. |
+| `uname -a` | نمایش کامل اطلاعات کرنل و سیستم‌عامل شامل نسخه کرنل، معماری (مثل x86_64) و تاریخ کامپایل. |
+| `uptime` | نشان می‌دهد سیستم چه مدت است روشن است، چند کاربر متصل‌اند و میانگین بار پردازشی (load average) سیستم. |
+| `lscpu` | اطلاعات کامل پردازنده شامل تعداد هسته‌ها، معماری و فرکانس. |
+| `free -h` | نمایش وضعیت حافظه RAM و فضای swap به‌صورت خوانا (h = human-readable). |
+| `df -h` | نمایش فضای اشغال‌شده و آزاد دیسک‌ها/پارتیشن‌ها به‌صورت خوانا. |
+| `lsblk` | نمایش ساختار درختی دیسک‌ها و پارتیشن‌های متصل به سیستم. |
+| `lsusb` | نمایش دستگاه‌های متصل از طریق پورت USB. |
+
+**تحلیل کوتاه:** درصد استفاده از RAM و دیسک را از خروجی `free -h` و `df -h` بردار و بنویس آیا سیستم در وضعیت سالمی است یا نزدیک به پر شدن.
+
+</div>
 
 ---
 
@@ -616,22 +542,25 @@ ps -p $pid
 kill $pid
 ps aux | grep sleep
 ```
+
 ![alt text](image-78.png)
-
 ![alt text](image-79.png)
-
 ![alt text](image-80.png)
 
+<div dir="rtl">
 
-**توضیح:**
-- `ps aux` نمایش تمام فرآیندهای در حال اجرا روی سیستم با جزئیات (کاربر، PID، درصد استفاده CPU/حافظه، دستور اجراشده).
-- `ps aux | grep bash` فیلتر کردن خروجی بالا فقط برای فرآیندهایی که اسمشان شامل bash است.
-- `sleep 100 &` اجرای دستور sleep (که ۱۰۰ ثانیه صبر می‌کند) در **پس‌زمینه**؛ علامت `&` باعث می‌شود ترمینال بلاک نشود و بلافاصله کنترل به کاربر برگردد.
-- `jobs` نمایش لیست کارهای در حال اجرا در پس‌زمینه در همین نشست ترمینال.
-- `pid=$(pgrep -n sleep)` پیدا کردن شناسه فرآیند (PID) آخرین پردازش sleep و ذخیره آن در متغیر `pid`.
-- `ps -p $pid` نمایش وضعیت دقیق همان فرآیند با شناسه پیدا‌شده.
-- `kill $pid` ارسال سیگنال پیش‌فرض (SIGTERM) برای خاتمه کنترل‌شده فرآیند.
-- بعد از kill، دوباره `ps aux | grep sleep` نشان می‌دهد که فرآیند دیگر وجود ندارد.
+| دستور | توضیح |
+|---|---|
+| `ps aux` | نمایش تمام فرآیندهای در حال اجرا روی سیستم با جزئیات (کاربر، PID، درصد استفاده CPU/حافظه، دستور اجراشده). |
+| `ps aux \| grep bash` | فیلتر کردن خروجی بالا فقط برای فرآیندهایی که اسمشان شامل bash است. |
+| `sleep 100 &` | اجرای دستور sleep (که ۱۰۰ ثانیه صبر می‌کند) در پس‌زمینه؛ علامت `&` باعث می‌شود ترمینال بلاک نشود و بلافاصله کنترل به کاربر برگردد. |
+| `jobs` | نمایش لیست کارهای در حال اجرا در پس‌زمینه در همین نشست ترمینال. |
+| `pid=$(pgrep -n sleep)` | پیدا کردن شناسه فرآیند (PID) آخرین پردازش sleep و ذخیره آن در متغیر pid. |
+| `ps -p $pid` | نمایش وضعیت دقیق همان فرآیند با شناسه پیدا‌شده. |
+| `kill $pid` | ارسال سیگنال پیش‌فرض (SIGTERM) برای خاتمه کنترل‌شده فرآیند. |
+| `ps aux \| grep sleep` (بعد از kill) | نشان می‌دهد که فرآیند دیگر وجود ندارد. |
+
+</div>
 
 ---
 
@@ -646,21 +575,24 @@ ps -o pid,ni,cmd -p $(pgrep -n sleep)
 
 time ls -R ../project
 ```
+
 ![alt text](image-81.png)
 ![alt text](image-82.png)
-
 ![alt text](image-83.png)
 ![alt text](image-84.png)
 
-**توضیح:**
-- `nice -n 10 sleep 60 &` اجرای یک فرآیند با اولویت پایین‌تر از حالت عادی در پس‌زمینه. مقدار nice از -20 (بالاترین اولویت) تا 19 (پایین‌ترین اولویت) متغیر است؛ عدد بزرگ‌تر یعنی فرآیند "مهربان‌تر" است و منابع کمتری از CPU می‌خواهد.
-- `ps -o pid,ni,cmd -p $(pgrep -n sleep)` نمایش ستون‌های دلخواه (شناسه فرآیند، مقدار nice، و دستور) فقط برای همان فرآیند.
-- `renice -n 5 -p $(pgrep -n sleep)` تغییر اولویت یک فرآیند در حال اجرا (بدون نیاز به کشتن و اجرای دوباره‌اش) به مقدار جدید.
-- دوباره چک کردن با `ps -o` برای دیدن مقدار nice تغییریافته.
-- `time ls -R ~/project` اندازه‌گیری زمان اجرای یک دستور؛ خروجی شامل سه مقدار است: `real` (زمان واقعی سپری‌شده)، `user` (زمان CPU در حالت کاربر) و `sys` (زمان CPU در حالت سیستم).
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `nice -n 10 sleep 60 &` | اجرای یک فرآیند با اولویت پایین‌تر از حالت عادی در پس‌زمینه. مقدار nice از -20 (بالاترین اولویت) تا 19 (پایین‌ترین اولویت) متغیر است. |
+| `ps -o pid,ni,cmd -p $(pgrep -n sleep)` | نمایش ستون‌های دلخواه (شناسه فرآیند، مقدار nice، و دستور) فقط برای همان فرآیند. |
+| `renice -n 5 -p $(pgrep -n sleep)` | تغییر اولویت یک فرآیند در حال اجرا (بدون نیاز به کشتن و اجرای دوباره‌اش) به مقدار جدید. |
+| `time ls -R ../project` | اندازه‌گیری زمان اجرای یک دستور؛ خروجی شامل سه مقدار است: real (زمان واقعی)، user (زمان CPU در حالت کاربر) و sys (زمان CPU در حالت سیستم). |
+
+</div>
 
 ---
-
 
 ## تمرین ۱۶: کاربران و گروه‌ها
 
@@ -679,23 +611,26 @@ groups testuser
 sudo userdel -r testuser
 sudo groupdel testgroup
 ```
-![alt text](image-85.png)
 
+![alt text](image-85.png)
 ![alt text](image-86.png)
 
+<div dir="rtl">
 
-**توضیح:**
-- `whoami` نمایش نام کاربر فعلی.
-- `id` نمایش شناسه کاربری (UID)، شناسه گروه اصلی (GID) و تمام گروه‌هایی که کاربر عضو آن‌هاست.
-- `groups` نمایش اسم گروه‌هایی که کاربر فعلی عضو آن‌هاست.
-- `who` نمایش کاربرانی که در حال حاضر به سیستم لاگین هستند.
-- `last -n 5` نمایش ۵ مورد آخر از تاریخچه ورود کاربران به سیستم.
-- `sudo groupadd testgroup` ساخت یک گروه آزمایشی جدید (نیاز به دسترسی root دارد، برای همین `sudo`).
-- `sudo useradd -m -G testgroup testuser` ساخت یک کاربر آزمایشی جدید؛ `-m` یعنی پوشه home برایش ساخته شود و `-G testgroup` یعنی این کاربر به گروه testgroup اضافه شود.
-- `id testuser` و `groups testuser` بررسی اینکه کاربر جدید واقعاً عضو گروه شده است.
-- `sudo userdel -r testuser` حذف کاربر آزمایشی همراه با پوشه home او (`-r` یعنی remove home directory).
-- `sudo groupdel testgroup` حذف گروه آزمایشی.
+| دستور | توضیح |
+|---|---|
+| `whoami` | نمایش نام کاربر فعلی. |
+| `id` | نمایش شناسه کاربری (UID)، شناسه گروه اصلی (GID) و تمام گروه‌هایی که کاربر عضو آن‌هاست. |
+| `groups` | نمایش اسم گروه‌هایی که کاربر فعلی عضو آن‌هاست. |
+| `who` | نمایش کاربرانی که در حال حاضر به سیستم لاگین هستند. |
+| `last -n 5` | نمایش ۵ مورد آخر از تاریخچه ورود کاربران به سیستم. |
+| `sudo groupadd testgroup` | ساخت یک گروه آزمایشی جدید (نیاز به دسترسی root). |
+| `sudo useradd -m -G testgroup testuser` | ساخت یک کاربر آزمایشی جدید؛ -m یعنی پوشه home برایش ساخته شود و -G testgroup یعنی این کاربر به گروه testgroup اضافه شود. |
+| `id testuser` / `groups testuser` | بررسی اینکه کاربر جدید واقعاً عضو گروه شده است. |
+| `sudo userdel -r testuser` | حذف کاربر آزمایشی همراه با پوشه home او (-r = remove home directory). |
+| `sudo groupdel testgroup` | حذف گروه آزمایشی. |
 
+</div>
 
 ---
 
@@ -711,18 +646,21 @@ systemctl status ssh
 sudo systemctl start ssh
 systemctl status ssh
 ```
+
 ![alt text](image-87.png)
 ![alt text](image-88.png)
 
-**توضیح:**
-- `systemctl status ssh` نمایش وضعیت فعلی یک سرویس مشخص (اینجا ssh)؛ نشان می‌دهد فعال است یا نه، از چه زمانی در حال اجراست و چند خط آخر لاگ آن.
-- `systemctl list-units --type=service --state=running` نمایش لیست همه سرویس‌هایی که هم‌اکنون در حال اجرا هستند.
-- `journalctl -u ssh -n 20` نمایش ۲۰ خط آخر از لاگ‌های سیستمی مربوط به سرویس ssh؛ `-u` یعنی unit (واحد سرویس) و این دستور برای بررسی رفتار یا خطاهای اخیر یک سرویس خیلی کاربردی است.
-- `sudo systemctl stop ssh` متوقف کردن موقت سرویس (نیاز به دسترسی ادمین).
-- `sudo systemctl start ssh` راه‌اندازی مجدد سرویس متوقف‌شده.
-- بین این دو دستور، با `systemctl status ssh` تغییر وضعیت (inactive به active) را می‌بینی و می‌توانی اسکرین‌شات بگیری.
+<div dir="rtl">
 
-اگر ssh روی سیستمت نصب نیست، می‌توانی از سرویس دیگری مثل `cron` یا `cups` به‌جایش استفاده کنی.
+| دستور | توضیح |
+|---|---|
+| `systemctl status ssh` | نمایش وضعیت فعلی سرویس ssh؛ نشان می‌دهد فعال است یا نه، از چه زمانی در حال اجراست و چند خط آخر لاگ آن. |
+| `systemctl list-units --type=service --state=running` | نمایش لیست همه سرویس‌هایی که هم‌اکنون در حال اجرا هستند. |
+| `journalctl -u ssh -n 20` | نمایش ۲۰ خط آخر از لاگ‌های سیستمی مربوط به سرویس ssh؛ -u یعنی unit. |
+| `sudo systemctl stop ssh` | متوقف کردن موقت سرویس (نیاز به دسترسی ادمین). |
+| `sudo systemctl start ssh` | راه‌اندازی مجدد سرویس متوقف‌شده. |
+
+</div>
 
 ---
 
@@ -735,18 +673,22 @@ sudo apt install tree
 tree --version
 sudo apt remove tree
 ```
+
 ![alt text](image-89.png)
-
 ![alt text](image-90.png)
-
 ![alt text](image-91.png)
 
-**توضیح:**
-- `apt search tree` جستجوی یک بسته نرم‌افزاری کم‌حجم و بی‌خطر (اینجا ابزار `tree` که ساختار پوشه‌ها را نمایش می‌دهد) در مخزن نرم‌افزاری سیستم.
-- `apt show tree` نمایش اطلاعات کامل بسته شامل توضیح، نسخه، حجم و وابستگی‌ها، قبل از نصب.
-- `sudo apt install tree` نصب واقعی بسته روی سیستم (نیاز به دسترسی ادمین).
-- `tree --version` بررسی اینکه ابزار درست نصب شده و نسخه‌اش را نشان دادن.
-- `sudo apt remove tree` حذف بسته از سیستم در صورت نیاز.
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `apt search tree` | جستجوی یک بسته نرم‌افزاری کم‌حجم و بی‌خطر (اینجا ابزار tree) در مخزن نرم‌افزاری سیستم. |
+| `apt show tree` | نمایش اطلاعات کامل بسته شامل توضیح، نسخه، حجم و وابستگی‌ها، قبل از نصب. |
+| `sudo apt install tree` | نصب واقعی بسته روی سیستم (نیاز به دسترسی ادمین). |
+| `tree --version` | بررسی اینکه ابزار درست نصب شده و نسخه‌اش را نشان دادن. |
+| `sudo apt remove tree` | حذف بسته از سیستم در صورت نیاز. |
+
+</div>
 
 ---
 
@@ -766,31 +708,28 @@ curl -I https://www.google.com > http_request.txt
 
 cat ip_info.txt route_info.txt ping_result.txt open_ports.txt http_request.txt
 ```
+
 ![alt text](image-92.png)
-
 ![alt text](image-93.png)
-
 ![alt text](image-94.png)
-
 ![alt text](image-95.png)
-
 ![alt text](image-96.png)
-
 ![alt text](image-97.png)
-
 ![alt text](image-98.png)
-
 ![alt text](image-99.png)
 
+<div dir="rtl">
 
+| دستور | توضیح |
+|---|---|
+| `ip a` | نمایش تمام رابط‌های شبکه (interfaces) سیستم و نشانی IP اختصاص‌یافته به هرکدام. |
+| `ip route` | نمایش جدول مسیریابی، از جمله مسیر پیش‌فرض (default gateway). |
+| `ping -c 4 8.8.8.8` | ارسال ۴ بسته آزمایشی به یک سرور مشخص (DNS گوگل) برای بررسی اتصال به اینترنت و زمان پاسخ. |
+| `ss -tuln` | نمایش درگاه‌های (ports) باز و در حال گوش‌دادن؛ t=TCP، u=UDP، l=listening، n=نمایش شماره پورت. |
+| `curl -I https://www.google.com` | ارسال یک درخواست ساده HTTP و دریافت فقط هدر پاسخ (بدون محتوای کامل صفحه). |
+| `cat ip_info.txt ...` | نمایش محتوای همه فایل‌های گزارش کنار هم برای تحلیل نهایی. |
 
-**توضیح:**
-- `ip a` (یا `ip addr`) نمایش تمام رابط‌های شبکه (interfaces) سیستم و نشانی IP اختصاص‌یافته به هرکدام.
-- `ip route` نمایش جدول مسیریابی، از جمله مسیر پیش‌فرض (default gateway) که ترافیک خروجی از آن عبور می‌کند.
-- `ping -c 4 8.8.8.8` ارسال ۴ بسته آزمایشی به یک سرور مشخص (اینجا DNS گوگل) برای بررسی اتصال به اینترنت و زمان پاسخ (latency)؛ `-c 4` یعنی فقط ۴ بار تست کند و متوقف شود.
-- `ss -tuln` نمایش درگاه‌های (ports) باز و در حال گوش‌دادن (listening) روی سیستم؛ `t` یعنی TCP، `u` یعنی UDP، `l` یعنی listening و `n` یعنی نمایش شماره پورت به‌جای اسم سرویس.
-- `curl -I https://www.google.com` ارسال یک درخواست ساده HTTP و دریافت فقط هدر پاسخ (بدون محتوای کامل صفحه)؛ برای تست دسترسی به یک وب‌سایت خاص مفید است.
-- در پایان، محتوای همه فایل‌های گزارش را با `cat` کنار هم می‌بینیم و یک تحلیل کوتاه در گزارش می‌نویسیم (مثلاً: آیا پینگ موفق بود؟ چند پورت باز است؟).
+</div>
 
 ---
 
@@ -817,22 +756,24 @@ else
   echo "Unknown User"
 fi
 ```
-![alt text](image-100.png)
 
+![alt text](image-100.png)
 ![alt text](image-101.png)
 ![alt text](image-102.png)
 
+<div dir="rtl">
 
+| دستور | توضیح |
+|---|---|
+| `env` | نمایش تمام متغیرهای محیطی (environment variables) فعلی سیستم. |
+| `echo $HOME` / `echo $PATH` | نمونه‌ای از متغیرهای محیطی مهم؛ HOME مسیر پوشه خانه کاربر و PATH لیست مسیرهایی است که سیستم برای پیدا کردن دستورهای اجرایی در آن‌ها جستجو می‌کند. |
+| `MY_VAR="Hello world"` | ساخت یک متغیر موقت محلی (فقط در همین نشست ترمینال معتبر است). |
+| `export MY_VAR` | این متغیر محلی را به یک متغیر محیطی تبدیل می‌کند که به زیرفرآیندها هم منتقل می‌شود؛ برای همین در `bash -c '...'` هم قابل مشاهده است. |
+| `unset MY_VAR` | حذف کامل متغیر از حافظه. |
+| `read -p "..." name` | دریافت ورودی از کاربر و ذخیره آن در متغیر name؛ -p یعنی نمایش یک پیام راهنما قبل از دریافت ورودی. |
+| `if [ "$name" == "ali" ]; then ... fi` | یک شرط ساده: اگر مقدار وارد‌شده برابر ali باشد پیام خوش‌آمدگویی خاص چاپ می‌شود، در غیر این صورت پیام عمومی. |
 
-**توضیح:**
-- `env` نمایش تمام متغیرهای محیطی (environment variables) فعلی سیستم.
-- `echo $HOME` و `echo $PATH` نمونه‌ای از متغیرهای محیطی مهم؛ `HOME` مسیر پوشه خانه کاربر و `PATH` لیست مسیرهایی است که سیستم برای پیدا کردن دستورهای اجرایی در آن‌ها جستجو می‌کند.
-- `MY_VAR="سلام دنیا"` ساخت یک متغیر موقت محلی (فقط در همین نشست ترمینال معتبر است).
-- `echo $MY_VAR` نمایش مقدار متغیر (علامت `$` قبل از اسم متغیر برای خواندن مقدارش لازم است).
-- `export MY_VAR` این متغیر محلی را به یک متغیر محیطی تبدیل می‌کند که به زیرفرآیندها (subprocesses) هم منتقل می‌شود؛ برای همین در `bash -c '...'` (که یک shell جدید باز می‌کند) هم قابل مشاهده است.
-- `unset MY_VAR` حذف کامل متغیر از حافظه.
-- `read -p "..." name` دریافت ورودی از کاربر و ذخیره آن در متغیر `name`؛ `-p` یعنی نمایش یک پیام راهنما قبل از دریافت ورودی.
-- بلوک `if [ "$name" == "ali" ]; then ... else ... fi` یک شرط ساده است: اگر مقدار وارد‌شده برابر "ali" باشد پیام خوش‌آمدگویی خاص چاپ می‌شود، در غیر این صورت پیام عمومی.
+</div>
 
 ---
 
@@ -847,9 +788,9 @@ nano ../project/scripts/final_report.sh
 ```bash
 #!/bin/bash
 
-REPORT= reports/final_report_$(date +%Y%m%d_%H%M%S).txt
+REPORT=reports/final_report_$(date +%Y%m%d_%H%M%S).txt
 
-echo "=== Fianl report in system  ===" > "$REPORT"
+echo "=== Final report of system ===" > "$REPORT"
 echo "Date: $(date)" >> "$REPORT"
 echo "User: $(whoami)" >> "$REPORT"
 echo "System Name: $(hostname)" >> "$REPORT"
@@ -861,82 +802,94 @@ free -h >> "$REPORT"
 echo -e "\n--- Disk ---" >> "$REPORT"
 df -h >> "$REPORT"
 
-echo -e "\n--- Projects File ---" >> "$REPORT"
+echo -e "\n--- Project Files ---" >> "$REPORT"
 find ~/project -type f | wc -l >> "$REPORT"
 
-echo -e "\n--- Active Process (first 10 one) ---" >> "$REPORT"
+echo -e "\n--- Active Processes (top 10) ---" >> "$REPORT"
 ps aux --sort=-%cpu | head -n 10 >> "$REPORT"
 
 echo -e "\n--- Network Info ---" >> "$REPORT"
 ip a >> "$REPORT"
 
-echo -e "\n--- LOG Summary ---" >> "$REPORT"
+echo -e "\n--- Log Summary ---" >> "$REPORT"
 grep -c "ERROR" ~/project/reports/sample.log >> "$REPORT"
 
 echo -e "\n--- Backup Status ---" >> "$REPORT"
 ls -l ~/project/backup >> "$REPORT"
 
-echo "Reports Are created successfully: $REPORT"
+echo "Report created successfully: $REPORT"
 ```
 
-سپس اجرا:
+اجرا:
 
 ```bash
 chmod +x scripts/final_report.sh
 scripts/final_report.sh
 cat ../project/reports/final_report_*.txt
 ```
+
 ![alt text](image-103.png)
-
 ![alt text](image-105.png)
-
 ![alt text](image-104.png)
-
 ![alt text](image-106.png)
 ![alt text](image-107.png)
 
-**توضیح:**
-- خط اول `#!/bin/bash` به آن shebang می‌گویند و مشخص می‌کند این فایل باید با bash اجرا شود.
-- `REPORT=~/project/reports/final_report_$(date +%Y%m%d_%H%M%S).txt` ساخت یک اسم فایل یکتا با استفاده از تاریخ و زمان فعلی، تا هر بار اجرای اسکریپت، فایل قبلی را پاک نکند.
-- هر بخش از اسکریپت با `>>` (append) اطلاعات مربوط به یک موضوع خاص (کاربر، حافظه، دیسک، فرآیندها، شبکه، لاگ، پشتیبان) را به فایل گزارش اضافه می‌کند.
-- `$(...)` یعنی خروجی یک دستور را داخل رشته دیگر جاسازی کن (command substitution)، مثل `$(date)` که تاریخ فعلی را می‌گیرد.
-- `chmod +x` فایل را قابل اجرا می‌کند، سپس با `./final_report.sh` یا مسیر کامل آن را اجرا می‌کنیم.
-- در نهایت با `cat` محتوای گزارش تولیدشده را می‌بینیم.
+<div dir="rtl">
+
+| دستور / بخش کد | توضیح |
+|---|---|
+| `#!/bin/bash` | به آن shebang می‌گویند و مشخص می‌کند این فایل باید با bash اجرا شود. |
+| `REPORT=reports/final_report_$(date +%Y%m%d_%H%M%S).txt` | ساخت یک اسم فایل یکتا با استفاده از تاریخ و زمان فعلی، تا هر بار اجرای اسکریپت، فایل قبلی پاک نشود. |
+| هر خط با `>>` | اطلاعات مربوط به یک موضوع خاص (کاربر، حافظه، دیسک، فرآیندها، شبکه، لاگ، پشتیبان) را به فایل گزارش اضافه می‌کند. |
+| `$(...)` | خروجی یک دستور را داخل رشته دیگر جاسازی می‌کند (command substitution)، مثل `$(date)`. |
+| `chmod +x scripts/final_report.sh` | فایل را قابل اجرا می‌کند. |
+| `scripts/final_report.sh` | اجرای اسکریپت. |
+| `cat ../project/reports/final_report_*.txt` | نمایش محتوای گزارش تولیدشده. |
+
+</div>
 
 ---
 
 ## تمرین ۲۲: زمان‌بندی اجرای یک کار
 
 **روش ۱ - با crontab (زمان‌بندی تکرارشونده):**
+
 ```bash
 crontab -e
 ```
-داخل فایل باز شده این خط را اضافه کن (اجرا هر روز ساعت ۹ صبح):
+
+خطی که داخل فایل اضافه شد (اجرا هر روز ساعت ۹ صبح):
+
 ```
 0 9 * * * /home/MM/project/scripts/final_report.sh
 ```
-سپس بررسی:
+
 ```bash
 crontab -l
 ```
 
-**روش ۲ - با at (زمان‌بندی یک‌باره، ساده‌تر برای تست):**
+**روش ۲ - با at (زمان‌بندی یک‌باره):**
+
 ```bash
 sudo apt install at
-echo "/scripts/final_report.sh" | at now + 1 minute
+echo "scripts/final_report.sh" | at now + 1 minute
 atq
 ```
-![alt text](image-109.png)
 
+![alt text](image-109.png)
 ![alt text](image-108.png)
 
-**توضیح:**
-- `crontab -e` باز کردن فایل زمان‌بندی کارهای دوره‌ای کاربر فعلی برای ویرایش.
-- ساختار خط cron شامل پنج فیلد زمانی (دقیقه، ساعت، روز ماه، ماه، روز هفته) و بعد از آن مسیر دستور/اسکریپت است؛ `0 9 * * *` یعنی دقیقه صفر، ساعت ۹، هر روز.
-- `crontab -l` نمایش لیست کارهای زمان‌بندی‌شده فعلی برای بررسی صحت ثبت.
-- `at now + 1 minute` روش ساده‌تر برای زمان‌بندی یک اجرای **یک‌باره** (نه تکراری) که یک دقیقه بعد اجرا می‌شود؛ برای تست سریع‌تر و گرفتن اسکرین‌شات مناسب‌تر است چون نیازی به صبر طولانی نیست.
-- `atq` نمایش لیست کارهای زمان‌بندی‌شده در صف at.
-- بعد از گذشت زمان تعیین‌شده، با چک کردن پوشه reports (مثلاً `ls -lt ~/project/reports`) می‌توانی ببینی فایل گزارش جدید در زمان درست ساخته شده است.
+<div dir="rtl">
+
+| دستور | توضیح |
+|---|---|
+| `crontab -e` | باز کردن فایل زمان‌بندی کارهای دوره‌ای کاربر فعلی برای ویرایش. |
+| `0 9 * * * /path/script.sh` | ساختار خط cron شامل پنج فیلد زمانی (دقیقه، ساعت، روز ماه، ماه، روز هفته) و بعد از آن مسیر دستور/اسکریپت؛ اینجا یعنی دقیقه صفر، ساعت ۹، هر روز. |
+| `crontab -l` | نمایش لیست کارهای زمان‌بندی‌شده فعلی برای بررسی صحت ثبت. |
+| `at now + 1 minute` | روش ساده‌تر برای زمان‌بندی یک اجرای یک‌باره (نه تکراری) که یک دقیقه بعد اجرا می‌شود. |
+| `atq` | نمایش لیست کارهای زمان‌بندی‌شده در صف at. |
+
+</div>
 
 ---
 
@@ -946,32 +899,34 @@ atq
 mkdir -p ../project/backup/stage1
 cp -r ../project/docs ../project/scripts ../project/backup/stage1/
 
-echo "This is a new varible" >> ../project/docs/note_part23.txt
+echo "This is a new variable" >> ../project/docs/note_part23.txt
 
 mkdir -p ../project/backup/stage2
 cp -r ../project/docs ../project/scripts ../project/backup/stage2/
 
 diff ../project/backup/stage1/docs/note_part23.txt ../project/backup/stage2/docs/note_part23.txt
 
-# روش بهتر و حرفه‌ای‌تر با rsync (فقط تغییرات را کپی می‌کند):
 rsync -av --progress ../project/docs ../project/backup/stage2_rsync/
 ```
+
 ![alt text](image-110.png)
 ![alt text](image-111.png)
-
 ![alt text](image-112.png)
-
 ![alt text](image-113.png)
 
+<div dir="rtl">
 
-**توضیح:**
-- `cp -r` کپی بازگشتی (recursive) یک پوشه همراه با تمام محتویاتش، برای گرفتن نسخه پشتیبان مرحله اول (stage1).
-- بعد از این، یک تغییر کوچک عمداً در یکی از فایل‌ها ایجاد می‌کنیم تا تفاوت بین نسخه‌ها قابل مشاهده باشد.
-- دوباره `cp -r` برای گرفتن نسخه پشتیبان دوم (stage2) بعد از تغییر.
-- `diff file1 file2` مقایسه محتوای دو فایل خط‌به‌خط و نمایش دقیق تفاوت‌ها (خطوطی که اضافه یا حذف شده‌اند).
-- `rsync -av --progress source destination` ابزار حرفه‌ای‌تر برای پشتیبان‌گیری؛ برخلاف `cp` که هر بار همه‌چیز را از نو کپی می‌کند، `rsync` فقط فایل‌های تغییر‌کرده یا جدید را منتقل می‌کند که برای پشتیبان‌گیری‌های بعدی سریع‌تر است. `-a` یعنی حالت آرشیو (حفظ مجوزها و تاریخ‌ها) و `-v` یعنی نمایش جزئیات (verbose).
+| دستور | توضیح |
+|---|---|
+| `cp -r ... backup/stage1/` | کپی بازگشتی (recursive) یک پوشه همراه با تمام محتویاتش، برای گرفتن نسخه پشتیبان مرحله اول. |
+| `echo "..." >> docs/note_part23.txt` | ایجاد یک تغییر کوچک عمدی در یکی از فایل‌ها تا تفاوت بین نسخه‌ها قابل مشاهده باشد. |
+| `cp -r ... backup/stage2/` | گرفتن نسخه پشتیبان دوم بعد از تغییر. |
+| `diff file1 file2` | مقایسه محتوای دو فایل خط‌به‌خط و نمایش دقیق تفاوت‌ها (خطوطی که اضافه یا حذف شده‌اند). |
+| `rsync -av --progress source dest` | ابزار حرفه‌ای‌تر پشتیبان‌گیری؛ برخلاف cp که هر بار همه‌چیز را از نو کپی می‌کند، rsync فقط فایل‌های تغییر‌کرده یا جدید را منتقل می‌کند. -a = حالت آرشیو (حفظ مجوزها و تاریخ‌ها)، -v = نمایش جزئیات. |
 
-**مقایسه اجرای اول و دوم:** در گزارش بنویس که اجرای اول یک کپی کامل از حالت اولیه بود، ولی اجرای دوم شامل تغییر جدید هم بود و با `diff` می‌توان دقیقاً همان خط تغییریافته را دید.
+**مقایسه اجرای اول و دوم:** اجرای اول یک کپی کامل از حالت اولیه بود، ولی اجرای دوم شامل تغییر جدید هم بود و با diff دقیقاً همان خط تغییریافته دیده شد.
+
+</div>
 
 ---
 
@@ -988,33 +943,38 @@ find ../tmp -name "*.tmp" -type f -delete
 ls -l ../tmp
 tree ../../project
 ```
-![alt text](image-114.png)
 
+![alt text](image-114.png)
 ![alt text](image-115.png)
 ![alt text](image-116.png)
 ![alt text](image-117.png)
 
-**توضیح:**
-- ساخت چند فایل موقت آزمایشی با پسوند مشخص (`.tmp`) داخل پوشه `tmp` که از قبل برای همین منظور ساخته بودیم.
-- `ls -l` قبل از پاک‌سازی، برای مستند کردن وضعیت اولیه (این خروجی را در گزارش به‌عنوان "قبل" قرار بده).
-- `find ~/project/tmp -name "*.tmp" -type f` ابتدا فقط برای دیدن لیست فایل‌هایی که قرار است حذف شوند (بدون حذف واقعی) - این یک اقدام احتیاطی خوب قبل از هر حذف است.
-- `find ~/project/tmp -name "*.tmp" -type f -delete` حذف **فقط** فایل‌هایی که پسوند `.tmp` دارند و در پوشه tmp هستند؛ این روش امن‌تر از `rm -rf` است چون معیار دقیق (نام، نوع، مسیر) مشخص شده و امکان حذف اشتباه فایل‌های اصلی پروژه وجود ندارد.
-- `ls -l` و `tree` بعد از پاک‌سازی، برای اثبات اینکه فقط فایل‌های موقت حذف شدند و بقیه پوشه‌های پروژه (docs، scripts و...) دست‌نخورده باقی مانده‌اند.
+<div dir="rtl">
 
-**معیار حذف:** فقط فایل‌هایی حذف شدند که هم پسوندشان `.tmp` بود و هم داخل پوشه مخصوص فایل‌های موقت قرار داشتند؛ به این ترتیب خطر حذف تصادفی فایل‌های اصلی پروژه از بین می‌رود.
+| دستور | توضیح |
+|---|---|
+| `touch temp1.tmp temp2.tmp temp3.tmp cache_test.tmp` | ساخت چند فایل موقت آزمایشی با پسوند مشخص (.tmp) داخل پوشه tmp. |
+| `ls -l ../../project/tmp` (قبل از حذف) | مستند کردن وضعیت اولیه، برای مقایسه با بعد از پاک‌سازی. |
+| `find ../tmp -name "*.tmp" -type f` | ابتدا فقط دیدن لیست فایل‌هایی که قرار است حذف شوند (بدون حذف واقعی)؛ یک اقدام احتیاطی خوب قبل از هر حذف. |
+| `find ../tmp -name "*.tmp" -type f -delete` | حذف فقط فایل‌هایی که پسوند .tmp دارند و در پوشه tmp هستند؛ این روش امن‌تر از rm -rf است چون معیار دقیق (نام، نوع، مسیر) مشخص شده. |
+| `ls -l ../tmp` و `tree ../../project` (بعد از حذف) | اثبات اینکه فقط فایل‌های موقت حذف شدند و بقیه پوشه‌های پروژه دست‌نخورده باقی مانده‌اند. |
+
+**معیار حذف:** فقط فایل‌هایی حذف شدند که هم پسوندشان .tmp بود و هم داخل پوشه مخصوص فایل‌های موقت قرار داشتند؛ به این ترتیب خطر حذف تصادفی فایل‌های اصلی پروژه از بین می‌رود.
+
+</div>
 
 ---
 
 ## تمرین ۲۵ (اختیاری): برنامه فرآیندی کوچک
 
-می‌توانی این کار را با یک اسکریپت ساده bash انجام دهی (نیازی به زبان C نیست):
-
 ```bash
 nano ../project/scripts/proc_info.sh
 ```
+
 ![alt text](image-118.png)
 
 محتوای فایل:
+
 ```bash
 #!/bin/bash
 echo "PID of current process: $$"
@@ -1025,34 +985,42 @@ echo "Execution ended"
 ```
 
 اجرا:
+
 ```bash
 chmod +x ../project/scripts/proc_info.sh
 ../project/scripts/proc_info.sh &
 ps -o pid,ppid,cmd -p $!
 wait
 ```
+
 ![alt text](image-119.png)
 
+<div dir="rtl">
 
-**توضیح:**
-- `$$` یک متغیر خاص در bash است که شناسه فرآیند (PID) خودِ اسکریپت در حال اجرا را نگه می‌دارد.
-- `$PPID` شناسه فرآیند والد (parent) را نشان می‌دهد؛ یعنی فرآیندی که این اسکریپت را صدا زده (مثلاً خود شل ترمینال).
-- `sleep 10` باعث می‌شود اسکریپت ۱۰ ثانیه فعال/زنده بماند تا فرصت کافی برای بررسی وضعیتش از یک ترمینال دیگر وجود داشته باشد.
-- با اجرای `proc_info.sh &` در پس‌زمینه، `$!` شناسه فرآیند آخرین کاری که در پس‌زمینه اجرا شده را نگه می‌دارد.
-- `ps -o pid,ppid,cmd -p $!` نمایش اطلاعات همان فرآیند از دید سیستم، برای مقایسه با چیزی که خودِ اسکریپت چاپ کرده بود.
-- `wait` منتظر می‌ماند تا فرآیند پس‌زمینه کامل تمام شود قبل از ادامه ترمینال.
+| دستور / متغیر | توضیح |
+|---|---|
+| `$$` | یک متغیر خاص در bash است که شناسه فرآیند (PID) خودِ اسکریپت در حال اجرا را نگه می‌دارد. |
+| `$PPID` | شناسه فرآیند والد (parent) را نشان می‌دهد؛ یعنی فرآیندی که این اسکریپت را صدا زده. |
+| `sleep 10` | باعث می‌شود اسکریپت ۱۰ ثانیه فعال/زنده بماند تا فرصت کافی برای بررسی وضعیتش از یک ترمینال دیگر وجود داشته باشد. |
+| `../project/scripts/proc_info.sh &` | اجرای اسکریپت در پس‌زمینه. |
+| `$!` | شناسه فرآیند آخرین کاری که در پس‌زمینه اجرا شده را نگه می‌دارد. |
+| `ps -o pid,ppid,cmd -p $!` | نمایش اطلاعات همان فرآیند از دید سیستم، برای مقایسه با چیزی که خودِ اسکریپت چاپ کرده بود. |
+| `wait` | منتظر می‌ماند تا فرآیند پس‌زمینه کامل تمام شود قبل از ادامه ترمینال. |
+
+</div>
 
 ---
 
+<div dir="rtl">
+
 ## نکات پایانی برای گزارش
 
-برای هر تمرین بالا، این ساختار را در گزارش رعایت کن:
+برای هر تمرین بالا، این ساختار در گزارش رعایت شده است:
 1. عنوان و هدف تمرین
-2. دستورهایی که اجرا کردی (دقیقاً همان‌هایی که تایپ کردی)
+2. دستورهای اجراشده
 3. اسکرین‌شات خروجی ترمینال
-4. یک یا دو خط توضیح "این خروجی یعنی چه"
-5. اگر مشکلی پیش آمد، چطور حلش کردی
+4. جدول توضیح دستور و معنی خروجی
 
-در نتیجه‌گیری نهایی هم بنویس که ترمینال لینوکس چطور یک ابزار یکپارچه برای مدیریت فایل، فرآیند، کاربر، شبکه و منابع سیستم است و کدام بخش (مثلاً سطح دسترسی یا مدیریت فرآیندها) برایت سخت‌تر یا جالب‌تر بود.
+**نتیجه‌گیری:** ترمینال لینوکس یک ابزار یکپارچه برای مدیریت فایل، فرآیند، کاربر، شبکه و منابع سیستم است. اجرای دستورها فقط حفظ کردن نیست، بلکه شامل انتخاب ابزار مناسب، بررسی خروجی، تحلیل نتیجه و رعایت ایمنی سیستم است.
 
-
+</div>
